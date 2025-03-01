@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Popular Recipes</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Popular Recipes</h1>
+      <p>Our most loved recipes</p>
+    </header>
+    
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="popular.html" aria-current="page">Popular Recipes</a>
+      <a href="about.html">About</a>
+    </nav>
+    
+    <main>
+      <section class="search-section">
+        <div class="search-container">
+          <input type="text" placeholder="Search for recipes..." class="search-input">
+          <button class="search-button">Search</button>
+        </div>
+      </section>
+      
+      <section class="popular-recipes">
+        <h2>Most Popular This Week</h2>
+        <div class="recipe-grid">
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Margherita Pizza</h3>
+              <p class="recipe-tags">
+                <span class="tag">Italian</span>
+                <span class="tag">Dinner</span>
+                <span class="tag">Vegetarian</span>
+              </p>
+              <p class="recipe-description">Classic Italian pizza with fresh tomatoes, mozzarella, and basil.</p>
+              <a href="margherita-pizza.html" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Chocolate Brownies</h3>
+              <p class="recipe-tags">
+                <span class="tag">Dessert</span>
+                <span class="tag">Baking</span>
+                <span class="tag">Sweet</span>
+              </p>
+              <p class="recipe-description">Rich and fudgy chocolate brownies that are perfect for any occasion.</p>
+              <a href="chocolate-brownies.html" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Spaghetti Carbonara</h3>
+              <p class="recipe-tags">
+                <span class="tag">Italian</span>
+                <span class="tag">Pasta</span>
+                <span class="tag">Dinner</span>
+              </p>
+              <p class="recipe-description">Creamy pasta dish with eggs, cheese, pancetta, and black pepper.</p>
+              <a href="spaghetti-carbonara.html" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Beef Tacos</h3>
+              <p class="recipe-tags">
+                <span class="tag">Mexican</span>
+                <span class="tag">Dinner</span>
+                <span class="tag">Quick</span>
+              </p>
+              <p class="recipe-description">Flavorful beef tacos with fresh toppings and homemade salsa.</p>
+              <a href="" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="trending-recipes">
+        <h2>Trending Now</h2>
+        <div class="recipe-grid">
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Quinoa Salad</h3>
+              <p class="recipe-tags">
+                <span class="tag">Healthy</span>
+                <span class="tag">Vegetarian</span>
+                <span class="tag">Lunch</span>
+              </p>
+              <p class="recipe-description">Nutritious quinoa salad with fresh vegetables and a zesty dressing.</p>
+              <a href="" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://media.istockphoto.com/id/1479262112/photo/butter-chicken.webp?a=1&b=1&s=612x612&w=0&k=20&c=zlL-vxHvAftRnyGhEwIKba37oSSwVwZU1UjPlMS847E=')"></div>
+            <div class="recipe-content">
+              <h3>Butter Chicken</h3>
+              <p class="recipe-tags">
+                <span class="tag">Indian</span>
+                <span class="tag">Dinner</span>
+                <span class="tag">Spicy</span>
+              </p>
+              <p class="recipe-description">Creamy and flavorful Indian butter chicken with tender chicken pieces.</p>
+              <a href="" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Avocado Toast</h3>
+              <p class="recipe-tags">
+                <span class="tag">Breakfast</span>
+                <span class="tag">Vegetarian</span>
+                <span class="tag">Quick</span>
+              </p>
+              <p class="recipe-description">Simple and delicious avocado toast with various toppings.</p>
+              <a href="" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Strawberry Cheesecake</h3>
+              <p class="recipe-tags">
+                <span class="tag">Dessert</span>
+                <span class="tag">Baking</span>
+                <span class="tag">Sweet</span>
+              </p>
+              <p class="recipe-description">Creamy cheesecake with a fresh strawberry topping.</p>
+              <a href="" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Hack & Snack</h3>
+          <p>.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="popular.html">Popular Recipes</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: shwetanadar@gmail.com</p>
+          <p>Phone: xxxxxxxxxxx</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 terms and condition apply. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

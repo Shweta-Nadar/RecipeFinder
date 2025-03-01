@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hack & Snack</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero-header">
+      <div class="hero-content">
+        <h1>Hack & Snack</h1>
+        <p class="hero-subtitle">Debug your hunger with the perfect recipe!</p>
+        <div class="hero-search">
+          <input type="text" placeholder="Search for recipes..." class="hero-search-input">
+          <button class="hero-search-button">Find Recipes</button>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag">Breakfast</span>
+          <span class="hero-tag">Lunch</span>
+          <span class="hero-tag">Dinner</span>
+          <span class="hero-tag">Desserts</span>
+          <span class="hero-tag">Healthy</span>
+        </div>
+      </div>
+      <div class="hero-overlay"></div>
+    </header>
+    
+    <nav>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="popular.html">Popular Recipes</a>
+      <a href="about.html">About</a>
+    </nav>
+    
+    <main>
+      <section class="search-section">
+        <div class="search-container">
+          <input type="text" placeholder="Search for recipes..." class="search-input">
+          <button class="search-button">Search</button>
+        </div>
+        
+        <div class="filter-container">
+          <div class="filter">
+            <label for="meal-type">Meal Type:</label>
+            <select id="meal-type">
+              <option value="all">All</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="dessert">Dessert</option>
+            </select>
+          </div>
+          
+          <div class="filter">
+            <label for="cuisine">Cuisine:</label>
+            <select id="cuisine">
+              <option value="all">All</option>
+              <option value="italian">Italian</option>
+              <option value="mexican">Mexican</option>
+              <option value="indian">Indian</option>
+              <option value="chinese">Chinese</option>
+              <option value="american">American</option>
+            </select>
+          </div>
+          
+          <div class="filter">
+            <label for="diet">Dietary Needs:</label>
+            <select id="diet">
+              <option value="all">All</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="gluten-free">Gluten-Free</option>
+              <option value="dairy-free">Dairy-Free</option>
+            </select>
+          </div>
+        </div>
+      </section>
+      
+      <section class="featured-recipes">
+        <h2>Featured Recipes</h2>
+        <div class="recipe-grid">
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Vegetable Salad</h3>
+              <p class="recipe-tags">
+                <span class="tag">Healthy</span>
+                <span class="tag">Vegetarian</span>
+                <span class="tag">Quick</span>
+              </p>
+              <p class="recipe-description">A refreshing vegetable salad with a tangy vinaigrette dressing.</p>
+              <a href="vegetable-salad.html" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Margherita Pizza</h3>
+              <p class="recipe-tags">
+                <span class="tag">Italian</span>
+                <span class="tag">Dinner</span>
+                <span class="tag">Vegetarian</span>
+              </p>
+              <p class="recipe-description">Classic Italian pizza with fresh tomatoes, mozzarella, and basil.</p>
+              <a href="margherita-pizza.html" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Chocolate Brownies</h3>
+              <p class="recipe-tags">
+                <span class="tag">Dessert</span>
+                <span class="tag">Baking</span>
+                <span class="tag">Sweet</span>
+              </p>
+              <p class="recipe-description">Rich and fudgy chocolate brownies that are perfect for any occasion.</p>
+              <a href="chocolate-brownies.html" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+          
+          <div class="recipe-card">
+            <div class="recipe-image" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="recipe-content">
+              <h3>Roasted Vegetables</h3>
+              <p class="recipe-tags">
+                <span class="tag">Healthy</span>
+                <span class="tag">Vegan</span>
+                <span class="tag">Side Dish</span>
+              </p>
+              <p class="recipe-description">Colorful roasted vegetables with herbs and olive oil.</p>
+              <a href="roasted-vegetables.html" class="view-recipe">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="popular-categories">
+        <h2>Popular Categories</h2>
+        <div class="category-grid">
+          <a href="" class="category-card">
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <h3>Breakfast</h3>
+          </a>
+          
+          <a href="" class="category-card">
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1547496502-affa22d38842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <h3>Lunch</h3>
+          </a>
+          
+          <a href="" class="category-card">
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <h3>Dinner</h3>
+          </a>
+          
+          <a href="" class="category-card">
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')"></div>
+            <h3>Desserts</h3>
+          </a>
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Hack & Snack</h3>
+          <p>Debug your hunger with the perfect recipe!</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="popular.html">Popular Recipes</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: shwetanadar@gmail.com</p>
+          <p>Phone: xxxxxxxxxxx</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 terms and condotions apply. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
