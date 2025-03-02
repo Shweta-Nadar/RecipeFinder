@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 /* Base Styles */
 * {
   box-sizing: border-box;
@@ -6,7 +12,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Quicksand', sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f8f9fa;
@@ -14,7 +20,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #2c7873;
+  color: #e63946;
 }
 
 a:hover {
@@ -23,7 +29,7 @@ a:hover {
 
 /* Header Styles */
 header {
-  background-color: #2c7873;
+  background-color: #e63946;
   color: white;
   text-align: center;
   padding: 2rem 1rem;
@@ -50,7 +56,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(44, 120, 115, 0.9) 0%, rgba(30, 88, 83, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.7) 0%, rgba(244, 162, 97, 0.6) 100%);
   z-index: 1;
 }
 
@@ -93,7 +99,7 @@ header {
 }
 
 .hero-search-button {
-  background: linear-gradient(to right, #6fb98f, #2c7873);
+  background: linear-gradient(to right, #f4a261, #e63946);
   color: white;
   border: none;
   padding: 0 2rem;
@@ -106,7 +112,7 @@ header {
 }
 
 .hero-search-button:hover {
-  background: linear-gradient(to right, #2c7873, #1e5853);
+  background: linear-gradient(to right, #e63946, #e76f51);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
@@ -182,10 +188,28 @@ nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 1rem;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #e63946;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 nav a {
@@ -202,12 +226,12 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #e6f2f0;
+  background-color: #fff3e0;
   text-decoration: none;
 }
 
 nav a[aria-current='page'] {
-  background-color: #2c7873;
+  background-color: #e63946;
   color: white;
 }
 
@@ -237,7 +261,7 @@ h2::after {
   bottom: 0;
   width: 50px;
   height: 3px;
-  background-color: #2c7873;
+  background-color: #e63946;
 }
 
 /* Search Section Styles */
@@ -263,7 +287,7 @@ h2::after {
 }
 
 .search-button {
-  background-color: #2c7873;
+  background-color: #e63946;
   color: white;
   border: none;
   padding: 0 1.5rem;
@@ -274,7 +298,7 @@ h2::after {
 }
 
 .search-button:hover {
-  background-color: #1e5853;
+  background-color: #e76f51;
 }
 
 .filter-container {
@@ -345,8 +369,8 @@ h2::after {
 }
 
 .tag {
-  background-color: #e6f2f0;
-  color: #2c7873;
+  background-color: #fff3e0;
+  color: #e76f51;
   padding: 0.3rem 0.6rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -360,7 +384,7 @@ h2::after {
 
 .view-recipe {
   display: inline-block;
-  background-color: #2c7873;
+  background-color: #e63946;
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
@@ -369,7 +393,7 @@ h2::after {
 }
 
 .view-recipe:hover {
-  background-color: #1e5853;
+  background-color: #e76f51;
   text-decoration: none;
 }
 
@@ -426,7 +450,7 @@ h2::after {
 
 /* Footer Styles */
 footer {
-  background-color: #1e5853;
+  background-color: #e76f51;
   color: white;
   padding: 3rem 1rem 1rem;
 }
@@ -454,7 +478,7 @@ footer {
   bottom: 0;
   width: 30px;
   height: 2px;
-  background-color: #6fb98f;
+  background-color: #ffb703;
 }
 
 .footer-section ul {
@@ -466,7 +490,7 @@ footer {
 }
 
 .footer-section a {
-  color: #ddd;
+  color: #fff3e0;
 }
 
 .footer-section a:hover {
@@ -476,9 +500,9 @@ footer {
 .footer-bottom {
   text-align: center;
   padding-top: 1.5rem;
-  border-top: 1px solid #2c7873;
+  border-top: 1px solid #e63946;
   font-size: 0.9rem;
-  color: #aaa;
+  color: #fff3e0;
 }
 
 /* Recipe Detail Page Styles */
@@ -503,7 +527,7 @@ footer {
 
 .recipe-info {
   padding: 2rem;
-  background-color: #f0f7f6;
+  background-color: #fff3e0;
 }
 
 .recipe-meta {
@@ -552,7 +576,7 @@ footer {
 .recipe-ingredients h3 {
   margin: 1.5rem 0 0.5rem;
   font-size: 1.2rem;
-  color: #2c7873;
+  color: #e63946;
 }
 
 .recipe-instructions ol {
@@ -567,7 +591,7 @@ footer {
 .recipe-instructions h3 {
   margin: 1.5rem 0 0.5rem;
   font-size: 1.2rem;
-  color: #2c7873;
+  color: #e63946;
 }
 
 .recipe-notes, .nutrition-info {
@@ -583,7 +607,7 @@ footer {
 }
 
 .nutrition-item {
-  background-color: #f0f7f6;
+  background-color: #fff3e0;
   padding: 1rem;
   border-radius: 4px;
   text-align: center;
@@ -650,7 +674,7 @@ footer {
 
 .mission-item h3 {
   margin-bottom: 1rem;
-  color: #2c7873;
+  color: #e63946;
 }
 
 .team-grid {
@@ -679,7 +703,7 @@ footer {
 
 .team-role {
   padding: 0 1.5rem;
-  color: #2c7873;
+  color: #e63946;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -703,7 +727,7 @@ footer {
 
 .contact-item h3 {
   margin-bottom: 0.5rem;
-  color: #2c7873;
+  color: #e63946;
 }
 
 .contact-form {
@@ -715,7 +739,7 @@ footer {
 
 .contact-form h3 {
   margin-bottom: 1.5rem;
-  color: #2c7873;
+  color: #e63946;
 }
 
 .form-group {
@@ -742,7 +766,7 @@ footer {
 }
 
 .submit-button {
-  background-color: #2c7873;
+  background-color: #e63946;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -753,7 +777,7 @@ footer {
 }
 
 .submit-button:hover {
-  background-color: #1e5853;
+  background-color: #e76f51;
 }
 
 /* Responsive Adjustments */
@@ -781,8 +805,24 @@ footer {
     font-size: 2rem;
   }
   
+  .nav-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 1rem;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
   nav a {
-    min-width: 7rem;
+    min-width: 100%;
+    margin: 0.2rem 0;
   }
   
   .filter-container {
@@ -835,15 +875,6 @@ footer {
   
   header h1 {
     font-size: 1.8rem;
-  }
-  
-  nav {
-    flex-direction: column;
-  }
-  
-  nav a {
-    width: 100%;
-    margin: 0.2rem 0;
   }
   
   .search-container {
