@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hack & Snack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      .message-bubble { max-width: 70%; }
+      .recipe-card { transition: transform 0.2s; }
+      .recipe-card:hover { transform: translateY(-2px); }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF4B4B",
+              secondary: "#FF8080",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white min-h-screen font-['Quicksand']">
+    <div class="max-w-4xl mx-auto bg-white min-h-screen flex flex-col">
+      <header
+        class="border-b p-4 flex items-center justify-between bg-white sticky top-0 z-50"
+      >
+        <div class="flex items-center">
+          <div>
+            <h1 class="text-2xl font-bold text-gray-800">Hack & Snack</h1>
+            <p class="text-sm text-gray-600">
+              Debug your hunger with the perfect recipe!
+            </p>
+          </div>
+        </div>
+        <button
+          id="clearChat"
+          class="text-gray-600 hover:text-primary px-4 py-2 rounded-button flex items-center gap-2"
+        >
+          <i class="ri-delete-bin-line"></i>
+          <span>Clear Chat</span>
+        </button>
+      </header>
+      <div class="flex-1 overflow-y-auto p-4" id="chatContainer">
+        <div
+          class="bot-message message-bubble bg-red-50 p-4 rounded-lg mb-4 ml-0 mr-auto"
+        >
+          <p>
+            Hello! I'm your snack assistant. I can help you find quick and easy
+            snack recipes perfect for your coding sessions. What would you like
+            to munch on while coding today? 🍿
+          </p>
+        </div>
+      </div>
+      <div class="p-4 border-t bg-white sticky bottom-0">
+        <div
+          class="flex gap-2 mb-4 overflow-x-auto whitespace-nowrap pb-2"
+          id="filterChips"
+        >
+          <button
+            class="px-4 py-2 bg-red-50 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
+          >
+            No-Bake
+          </button>
+          <button
+            class="px-4 py-2 bg-red-50 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
+          >
+            High Protein
+          </button>
+          <button
+            class="px-4 py-2 bg-red-50 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
+          >
+            Quick (< 5min)
+          </button>
+          <button
+            class="px-4 py-2 bg-red-50 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
+          >
+            Brain Food
+          </button>
+          <button
+            class="px-4 py-2 bg-red-50 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
+          >
+            Energy Boost
+          </button>
+        </div>
+        <div class="flex gap-2">
+          <div class="flex-1 relative">
+            <input
+              type="text"
+              id="messageInput"
+              class="w-full px-4 py-3 rounded-lg bg-red-50 focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="What kind of snack are you craving while coding?"
+            />
+            <button
+              class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary"
+            >
+              <i class="ri-mic-line"></i>
+            </button>
+          </div>
+          <button
+            id="sendMessage"
+            class="bg-primary text-white px-6 py-3 rounded-button hover:bg-primary/90 flex items-center gap-2"
+          >
+            <i class="ri-send-plane-line"></i>
+            <span>Send</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const mockRecipes = [
+        {
+          name: "Energy-Packed Trail Mix",
+          image:
+            "https://public.readdy.ai/ai/img_res/fedcb37586ea6afb8eba062119e59655.jpg",
+          time: "5 mins",
+          difficulty: "Easy",
+          servings: 6,
+        },
+        {
+          name: "Coder's Protein Bites",
+          image:
+            "https://public.readdy.ai/ai/img_res/455b92891dd7f6b771fda5522305dfab.jpg",
+          time: "15 mins",
+          difficulty: "Easy",
+          servings: 12,
+        },
+      ];
+      function createRecipeCard(recipe) {
+        return `
+      <div class="recipe-card bg-white rounded-lg shadow-sm border p-4 mb-4 cursor-pointer">
+      <div class="flex gap-4">
+      <img src="${recipe.image}" alt="${recipe.name}" class="w-24 h-24 object-cover rounded-lg">
+      <div class="flex-1">
+      <h3 class="font-semibold text-gray-800">${recipe.name}</h3>
+      <div class="flex gap-4 text-sm text-gray-600 mt-2">
+      <span class="flex items-center gap-1">
+      <i class="ri-time-line"></i>
+      ${recipe.time}
+      </span>
+      <span class="flex items-center gap-1">
+      <i class="ri-user-line"></i>
+      ${recipe.servings} servings
+      </span>
+      <span class="flex items-center gap-1">
+      <i class="ri-shield-star-line"></i>
+      ${recipe.difficulty}
+      </span>
+      </div>
+      <div class="flex gap-2 mt-3">
+      <button class="text-primary hover:bg-primary/10 px-3 py-1 rounded-button text-sm flex items-center gap-1">
+      <i class="ri-heart-line"></i>
+      Save
+      </button>
+      <button class="text-primary hover:bg-primary/10 px-3 py-1 rounded-button text-sm flex items-center gap-1">
+      <i class="ri-share-line"></i>
+      Share
+      </button>
+      </div>
+      </div>
+      </div>
+      </div>
+      `;
+      }
+      function addMessage(message, isUser = false) {
+        const chatContainer = document.getElementById("chatContainer");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message-bubble ${isUser ? "ml-auto bg-primary text-white" : "mr-auto bg-gray-100"} p-4 rounded-lg mb-4`;
+        messageDiv.innerHTML = message;
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+      function addRecipeResponse() {
+        const recipeCards = mockRecipes
+          .map((recipe) => createRecipeCard(recipe))
+          .join("");
+        addMessage(
+          `Here are some recipes that might interest you:<br><br>${recipeCards}`,
+        );
+      }
+      document.getElementById("sendMessage").addEventListener("click", () => {
+        const input = document.getElementById("messageInput");
+        const message = input.value.trim();
+        if (message) {
+          addMessage(message, true);
+          input.value = "";
+          setTimeout(addRecipeResponse, 1000);
+        }
+      });
+      document.getElementById("messageInput").addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          document.getElementById("sendMessage").click();
+        }
+      });
+      document.getElementById("clearChat").addEventListener("click", () => {
+        const chatContainer = document.getElementById("chatContainer");
+        chatContainer.innerHTML = `
+      <div class="bot-message message-bubble bg-red-50 p-4 rounded-lg mb-4 ml-0 mr-auto">
+      <p>Hello! I'm your snack assistant. I can help you find quick and easy snack recipes perfect for your coding sessions. What would you like to munch on while coding today? 🍿</p>
+      </div>
+      `;
+      });
+      document.querySelectorAll("#filterChips button").forEach((button) => {
+        button.addEventListener("click", () => {
+          addMessage(button.textContent, true);
+          setTimeout(addRecipeResponse, 1000);
+        });
+      });
+    </script>
+  </body>
+</html>
