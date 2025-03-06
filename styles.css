@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-/* Base Styles */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +27,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Header Styles */
+
 header {
   background-color: #e63946;
   color: white;
@@ -35,7 +35,7 @@ header {
   padding: 2rem 1rem;
 }
 
-/* Hero Header Styles */
+
 .hero-header {
   position: relative;
   height: 500px;
@@ -235,7 +235,7 @@ nav a[aria-current='page'] {
   color: white;
 }
 
-/* Main Content Styles */
+
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -264,7 +264,7 @@ h2::after {
   background-color: #e63946;
 }
 
-/* Search Section Styles */
+
 .search-section {
   background-color: white;
   padding: 2rem;
@@ -326,7 +326,7 @@ h2::after {
   background-color: white;
 }
 
-/* Recipe Grid Styles */
+
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -397,7 +397,7 @@ h2::after {
   text-decoration: none;
 }
 
-/* Category Grid Styles */
+
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -448,7 +448,7 @@ h2::after {
   font-size: 1.3rem;
 }
 
-/* Footer Styles */
+
 footer {
   background-color: #e76f51;
   color: white;
@@ -505,7 +505,7 @@ footer {
   color: #fff3e0;
 }
 
-/* Recipe Detail Page Styles */
+
 .recipe-detail {
   background-color: white;
   border-radius: 8px;
@@ -630,7 +630,7 @@ footer {
   margin-top: 2rem;
 }
 
-/* About Page Styles */
+
 .about-section, .mission-section, .team-section, .contact-section {
   margin-bottom: 4rem;
 }
