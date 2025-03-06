@@ -137,26 +137,59 @@
       const mockRecipes = [
         {
           name: "Energy-Packed Trail Mix",
-          image:
-            "https://public.readdy.ai/ai/img_res/fedcb37586ea6afb8eba062119e59655.jpg",
           time: "5 mins",
           difficulty: "Easy",
           servings: 6,
+          likes: 128,
+          saved: false,
+          ingredients: [
+            "almonds",
+            "cashews",
+            "dried cranberries",
+            "dark chocolate chips",
+            "pumpkin seeds",
+          ],
+          instructions: [
+            "Mix all ingredients in a large bowl",
+            "Store in an airtight container",
+            "Enjoy while coding!",
+          ],
         },
         {
           name: "Coder's Protein Bites",
-          image:
-            "https://public.readdy.ai/ai/img_res/455b92891dd7f6b771fda5522305dfab.jpg",
           time: "15 mins",
           difficulty: "Easy",
           servings: 12,
+          likes: 256,
+          saved: false,
+          ingredients: [
+            "oats",
+            "peanut butter",
+            "honey",
+            "protein powder",
+            "chia seeds",
+          ],
+          instructions: [
+            "Mix peanut butter and honey",
+            "Add dry ingredients",
+            "Roll into balls",
+            "Refrigerate for 30 mins",
+          ],
+        },
+        {
+          name: "Quick Avocado Toast",
+          time: "3 mins",
+          difficulty: "Easy",
+          servings: 1,
+          likes: 89,
+          saved: false,
+          ingredients: ["bread", "avocado", "salt", "pepper", "red pepper flakes"],
+          instructions: ["Toast bread", "Mash avocado", "Season and spread on toast"],
         },
       ];
       function createRecipeCard(recipe) {
         return `
-      <div class="recipe-card bg-white rounded-lg shadow-sm border p-4 mb-4 cursor-pointer">
-      <div class="flex gap-4">
-      <img src="${recipe.image}" alt="${recipe.name}" class="w-24 h-24 object-cover rounded-lg">
+      <div class="recipe-card bg-white rounded-lg shadow-sm border p-4 mb-4 cursor-pointer" data-recipe="${recipe.name}">
       <div class="flex-1">
       <h3 class="font-semibold text-gray-800">${recipe.name}</h3>
       <div class="flex gap-4 text-sm text-gray-600 mt-2">
@@ -173,16 +206,33 @@
       ${recipe.difficulty}
       </span>
       </div>
+      <div class="mt-3 space-y-2 hidden recipe-details">
+      <div class="text-sm">
+      <div class="font-medium mb-1">Ingredients:</div>
+      <ul class="list-disc pl-4">
+      ${recipe.ingredients.map((ing) => `<li>${ing}</li>`).join("")}
+      </ul>
+      </div>
+      <div class="text-sm">
+      <div class="font-medium mb-1">Instructions:</div>
+      <ol class="list-decimal pl-4">
+      ${recipe.instructions.map((inst) => `<li>${inst}</li>`).join("")}
+      </ol>
+      </div>
+      </div>
       <div class="flex gap-2 mt-3">
-      <button class="text-primary hover:bg-primary/10 px-3 py-1 rounded-button text-sm flex items-center gap-1">
-      <i class="ri-heart-line"></i>
-      Save
+      <button class="like-btn text-primary hover:bg-primary/10 px-3 py-1 rounded-button text-sm flex items-center gap-1" data-recipe="${recipe.name}">
+      <i class="ri-heart-${recipe.saved ? "fill" : "line"}"></i>
+      <span class="likes-count">${recipe.likes}</span>
       </button>
-      <button class="text-primary hover:bg-primary/10 px-3 py-1 rounded-button text-sm flex items-center gap-1">
+      <button class="share-btn text-primary hover:bg-primary/10 px-3 py-1 rounded-button text-sm flex items-center gap-1">
       <i class="ri-share-line"></i>
       Share
       </button>
-      </div>
+      <button class="toggle-details-btn text-primary hover:bg-primary/10 px-3 py-1 rounded-button text-sm flex items-center gap-1">
+      <i class="ri-arrow-down-s-line"></i>
+      Details
+      </button>
       </div>
       </div>
       </div>
@@ -200,8 +250,23 @@
         const recipeCards = mockRecipes
           .map((recipe) => createRecipeCard(recipe))
           .join("");
+        const foodInsights = [
+          "Did you know that healthy snacking can significantly boost your coding productivity? When we code, our brain consumes a lot of energy, and having the right nutrients can help maintain focus and mental clarity. The combination of complex carbohydrates, healthy fats, and proteins in these recipes provides sustained energy release, perfect for those long debugging sessions!",
+          "Fun fact: Studies have shown that certain foods can enhance cognitive function and memory. Nuts and dark chocolate, found in some of these recipes, contain antioxidants that may improve brain function. They're not just delicious - they're brain food!",
+          "These recipes are specially curated for developers who need quick, nutritious options that won't interrupt their coding flow. The ingredients are chosen to provide sustained energy without the crash that comes from sugary snacks.",
+        ];
+        const questions = [
+          "What's your go-to snack when you're deep in a coding session?",
+          "Have you noticed how different foods affect your programming productivity?",
+          "Which of these recipes would best fit into your coding routine?",
+          "Do you prefer sweet or savory snacks while coding?",
+        ];
+        const randomInsight =
+          foodInsights[Math.floor(Math.random() * foodInsights.length)];
+        const randomQuestion =
+          questions[Math.floor(Math.random() * questions.length)];
         addMessage(
-          `Here are some recipes that might interest you:<br><br>${recipeCards}`,
+          `Here are some recipes that might interest you!<br><br>${randomInsight}<br><br>${recipeCards}<br><br>${randomQuestion}`,
         );
       }
       document.getElementById("sendMessage").addEventListener("click", () => {
@@ -231,6 +296,71 @@
           addMessage(button.textContent, true);
           setTimeout(addRecipeResponse, 1000);
         });
+      });
+      document.addEventListener("click", (e) => {
+        if (e.target.closest(".like-btn")) {
+          const btn = e.target.closest(".like-btn");
+          const recipeName = btn.dataset.recipe;
+          const recipe = mockRecipes.find((r) => r.name === recipeName);
+          if (recipe) {
+            recipe.saved = !recipe.saved;
+            recipe.likes += recipe.saved ? 1 : -1;
+            const icon = btn.querySelector("i");
+            icon.className = `ri-heart-${recipe.saved ? "fill" : "line"}`;
+            btn.querySelector(".likes-count").textContent = recipe.likes;
+          }
+        }
+        if (e.target.closest(".share-btn")) {
+          const recipe = e.target.closest(".recipe-card").dataset.recipe;
+          const shareData = {
+            title: recipe,
+            text: `Check out this amazing recipe for ${recipe}!`,
+            url: window.location.href,
+          };
+          if (navigator.share) {
+            navigator.share(shareData);
+          } else {
+            const modal = document.createElement("div");
+            modal.className =
+              "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+            modal.innerHTML = `
+      <div class="bg-white p-4 rounded-lg max-w-sm w-full mx-4">
+      <h3 class="font-semibold mb-3">Share Recipe</h3>
+      <div class="flex gap-4 justify-center">
+      <button class="share-option p-3 rounded-lg hover:bg-gray-100">
+      <i class="ri-facebook-fill text-2xl text-blue-600"></i>
+      </button>
+      <button class="share-option p-3 rounded-lg hover:bg-gray-100">
+      <i class="ri-twitter-fill text-2xl text-blue-400"></i>
+      </button>
+      <button class="share-option p-3 rounded-lg hover:bg-gray-100">
+      <i class="ri-whatsapp-fill text-2xl text-green-500"></i>
+      </button>
+      </div>
+      <button class="mt-4 w-full py-2 text-gray-600 hover:bg-gray-100 rounded-button">Cancel</button>
+      </div>
+      `;
+            document.body.appendChild(modal);
+            modal.addEventListener("click", (e) => {
+              if (e.target === modal || e.target.textContent === "Cancel") {
+                modal.remove();
+              }
+            });
+          }
+        }
+        if (e.target.closest(".toggle-details-btn")) {
+          const card = e.target.closest(".recipe-card");
+          const details = card.querySelector(".recipe-details");
+          const btn = e.target.closest(".toggle-details-btn");
+          const icon = btn.querySelector("i");
+          if (details.classList.contains("hidden")) {
+            details.classList.remove("hidden");
+            icon.className = "ri-arrow-up-s-line";
+          } else {
+            details.classList.add("hidden");
+            icon.className = "ri-arrow-down-s-line";
+          }
+        }
       });
     </script>
   </body>
